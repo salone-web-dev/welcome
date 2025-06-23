@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salone Web Dev</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('bg.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+   /* Navbar Glass Style */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.7rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+     border-radius: 50px;
+     margin: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 35%;
+}
+
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  background: #247150;
+}
+
+/* Toggle button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  background: #fff;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Dropdown Menu with Glass Effect */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    z-index: 999;
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 0.4rem 0;
+    text-align: center;
+  }
+}
+
+
+    /* Banner Header */
+    .banner {
+      text-align: center;
+      padding: 6rem 1rem;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .banner h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .banner p {
+      font-size: 1.2rem;
+      color: #eee;
+    }
+
+    /* Glass Section */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1rem;
+      backdrop-filter: blur(03px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 9px 50px rgba(0, 0, 0, 0.1);
+      margin: 1rem auto;
+      width: 98%;
+      max-width: 1100px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      
+    }
+
+    .service-card h3 {
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+        
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #247150;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #247150;
+    }
+
+    /* Contact Section */
+      
+    #contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+        
+    }
+
+    #contact img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 2rem;
+    }
+
+    .contact-info p {
+      margin: 0.8rem 0;
+    }
+      
+      .IMG-CARD {
+      height: 60%;
+      width: 100%;
+          border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: #ccc;
+      margin-top: 3rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        margin-top: 1rem;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="pic10.jpg" alt="Logo" />
+      <span>Salone Web Dev</span>
+    </div>
+    <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="https://wa.me/+23273701329">Join us</a>
+      <a href="#contact">Contact Us</a>
+      <a href="https://wa.me/+23273701329" target="_blank">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <section class="glass-effect">
+      <img src="banner.png" height="20%" width="100%">
+    <h1>Every Business Needs a Website!</h1>
+    <p>In today’s digital age, having a strong online presence is no longer optional — it’s essential. We are your trusted technology partner in Sierra Leone, specializing in Web Development, IT Solutions, and Digital Innovation. Whether you're a startup, small business, or growing enterprise, we provide modern, scalable solutions tailored to your needs. Let us help you establish credibility, reach more customers, and take your business to the next level.
+<b>Get in touch today and make your business officially verified online.</b></p>
+  </section>
+
+  <!-- Services -->
+  <section class="glass-effect">
+    <h2 style="text-align: center">Our Services</h2>
+      <p style="text-align: center">We provide high-quality, reliable, and affordable IT services to businesses across Sierra Leone.</p>
+    <div class="services">
+        <div class="service-card">
+          <img src="pic02.jpg" class="IMG-CARD">
+        <h3>Web Development</h3>
+        <p>Professional and responsive websites for your businesses, institutions, NGOs and startups with ongoing free maintenance.
+            </p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+      <div class="service-card">
+          <img src="pic06.jpg" class="IMG-CARD">
+        <h3>Digital Marketing</h3>
+        <p>Grow your online visibility with our SEO, social media marketing, and online campaigns designed for businesses in Sierra Leone.</p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+      <div class="service-card">
+          <img src="pic03.jpg" class="IMG-CARD">
+        <h3>Graphic Designing</h3>
+        <p>From logos to flyers, our creative designers bring your ideas to life with stunning visuals tailored to your brand identity.</p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+      <div class="service-card">
+          <img src="pic07.jpg" class="IMG-CARD">
+        <h3>Web Hosting</h3>
+        <p>With the same web development bundle, we also offer one year fast, secure, and affordable hosting for all websites we build for you.</p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+      <div class="service-card">
+          <img src="pic04.jpg" class="IMG-CARD">
+        <h3>IT Consultation</h3>
+        <p>We help businesses digitize and optimize operations with expert advice on IT infrastructure, strategy, and implementation for <b>Free</b>.</p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+      <div class="service-card">
+          <img src="pic05.jpg" class="IMG-CARD">
+        <h3>Branding Services</h3>
+        <p>Establish a strong brand with our comprehensive branding services, logo design, product packaging to attract more audiences.</p>
+        <a href="https://wa.me/+23273701329" class="btn">Contact Us</a>
+      </div>
+    </div>
+  </section>
+    
+    
+    <!-- Salone Coding Academy Section -->
+<section class="glass-effect" id="contact">
+  <img src="salone%20coding%20acdemy%20logo.jpeg" class="IMG-CARD" alt="Salone Coding Academy" />
+  <div class="contact-info">
+    <h2>Salone Coding Academy</h2>
+    <p>At Salone Coding Academy, we empower youth and beginners with practical, hands-on training in modern web development, Fundamental programming languages, Grphic Designing and digital literacy. Our goal is to build the next generation of tech leaders in Sierra Leone through affordable IT lessons.</p><br>
+    <p><a href="https://wa.me/+23273701329" class="btn" target="_blank">Chat on WhatsApp</a></p>
+  </div>
+</section>
+    
+
+  <!-- Contact Section -->
+  <section class="glass-effect" id="contact">
+    <img src="pic10.jpg" alt="Contact Us" />
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <h3>Salone Web Dev</h3>
+      <p><strong>Email:</strong> mamadiconteh224@icloud.com</p>
+      <p><strong>Phone:</strong> +232 73 70 13 29</p>
+      <p><strong>Location:</strong> Freetown, Sierra Leone</p>
+        <br>
+      <p><a href="https://wa.me/+23273701329" class="btn" target="_blank">Chat on WhatsApp</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Salone Web Dev — All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script for Menu Toggle -->
+  <script>
+    // Toggle nav menu visibility on mobile
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('show');
+    });
+  </script>
+    
+    
+<script>
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  // Toggle menu when toggle button is clicked
+  toggleBtn.addEventListener('click', function (e) {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    navLinks.classList.toggle('show');
+  });
+
+  // Close menu when clicking anywhere outside
+  document.addEventListener('click', function (e) {
+    const isClickInsideNav = navLinks.contains(e.target);
+    const isClickOnToggle = toggleBtn.contains(e.target);
+
+    if (!isClickInsideNav && !isClickOnToggle) {
+      navLinks.classList.remove('show');
+    }
+  });
+</script>
+</body>
+</html>
